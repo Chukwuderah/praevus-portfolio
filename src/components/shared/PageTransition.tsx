@@ -21,8 +21,7 @@ export default function PageTransition({ children }: PageTransitionProps) {
         transition={{
           type: "spring",
           stiffness: 260,
-          damping: 20,
-          duration: 0.6,
+          damping: 22,
         }}
       >
         {children}

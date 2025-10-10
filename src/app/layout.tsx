@@ -1,14 +1,41 @@
 "use client";
 
 import "./globals.css";
+import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/lib/theme";
-import { CursorFollower } from "@/components/3D/CursorFollower";
 import { NavProvider, useNav } from "@/context/NavContext";
-import Navigation from "@/components/layout/Navigation";
 import PageTransition from "@/components/shared/PageTransition";
 import { ThemeToggle } from "@/components/shared/ThemeToggle";
 import { Toaster } from "sonner";
+
+const Navigation = dynamic(() => import("@/components/layout/Navigation"), {
+  ssr: false,
+});
+
+const CursorFollowerLazy = dynamic(
+  () => import("@/components/3D/CursorFollower"),
+  {
+    ssr: false,
+  }
+);
+
+export function CursorFollowerWrapper() {
+  const [shouldRender, setShouldRender] = useState(false);
+
+  useEffect(() => {
+    const handleMove = () => {
+      setShouldRender(true);
+      window.removeEventListener("mousemove", handleMove);
+    };
+    window.addEventListener("mousemove", handleMove);
+    return () => window.removeEventListener("mousemove", handleMove);
+  }, []);
+
+  if (!shouldRender) return null;
+  return <CursorFollowerLazy />;
+}
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -64,20 +91,19 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body className={inter.className}>
-        <CursorFollower />
+        <CursorFollowerWrapper />
         <ThemeProvider>
-          {/* <Navigation /> */}
-          <main className="min-h-screen">
+          <NavProvider>
             <PageTransition>
-              <ThemeToggle variant="orb" />
-              <NavProvider>
+              <main className="min-h-screen">
+                <ThemeToggle variant="orb" />
                 <LayoutContent>
                   {children}
                   <Toaster position="top-right" />
                 </LayoutContent>
-              </NavProvider>
+              </main>
             </PageTransition>
-          </main>
+          </NavProvider>
         </ThemeProvider>
       </body>
     </html>

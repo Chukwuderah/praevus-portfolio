@@ -7,7 +7,10 @@ type NavContextType = {
   setShowNav: (value: boolean) => void;
 };
 
-const NavContext = createContext<NavContextType | undefined>(undefined);
+const NavContext = createContext<NavContextType>({
+  showNav: true,
+  setShowNav: () => {},
+});;
 
 export function NavProvider({ children }: { children: ReactNode }) {
   const [showNav, setShowNav] = useState(true);

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
-export const CursorFollower = () => {
+export default function CursorFollower() {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 

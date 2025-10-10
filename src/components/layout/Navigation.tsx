@@ -37,6 +37,23 @@ export default function Navigation() {
     }
   }, [menuOpen]);
 
+  // close menu on window resize if width >= 768px
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // close menu on route change
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
   return (
     <>
       {/* DESKTOP NAV (top bar) */}
