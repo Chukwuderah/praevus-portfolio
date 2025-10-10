@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { z } from "zod";
-import toast from "react-hot-toast";
+import { toast } from "sonner";
 import {
   Mail,
   MapPin,
@@ -52,6 +52,20 @@ export default function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [fireflies, setFireflies] = useState<
+    { left: string; top: string; delay: number }[]
+  >([]);
+
+  // Generate random animation positions *only on client*
+  useEffect(() => {
+    const generatedFireflies = Array.from({ length: 25 }).map(() => ({
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      delay: Math.random() * 3,
+    }));
+
+    setFireflies(generatedFireflies);
+  }, []);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -94,11 +108,15 @@ export default function Contact() {
 
       if (!res.ok) throw new Error("Failed to send message");
 
-      toast.success("Message sent successfully ✅");
+      toast.success("Message Sent", {
+        description: "Thanks for reaching out! I'll get back to you soon.",
+      });
       setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (error) {
       console.error(error);
-      toast.error("Something went wrong ❌");
+      toast.error("Something went wrong", {
+        description: "Please try again later or contact me directly via email.",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -113,14 +131,11 @@ export default function Contact() {
 
       {/* Animated Fireflies/Stars */}
       <div className="absolute inset-0 pointer-events-none opacity-60">
-        {[...Array(30)].map((_, i) => (
+        {fireflies.map((f, i) => (
           <motion.div
             key={i}
-            className="absolute w-2 h-2 bg-yellow-400 rounded-full opacity-70"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
+            className="absolute w-2 h-2 bg-yellow-500 dark:bg-yellow-400 rounded-full opacity-70"
+            style={{ left: f.left, top: f.top }}
             animate={{
               y: [0, -20, 0],
               opacity: [0.3, 0.9, 0.3],
@@ -130,30 +145,30 @@ export default function Contact() {
               duration: 2 + Math.random() * 2,
               ease: "easeInOut",
               repeat: Infinity,
-              delay: Math.random() * 3,
+              delay: f.delay,
             }}
           />
         ))}
-      </div>
 
-      {/* Additional Twinkling Elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        {[...Array(15)].map((_, i) => (
-          <FloatingOrb
-            key={i}
-            size={i % 5 === 0 ? "md" : "sm"}
-            className={`absolute twinkle`}
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animation="none"
-            delay={Math.random() * 3}
-            color={
-              i % 3 === 0 ? "#FFD700" : i % 3 === 1 ? "#87CEEB" : "#FFA500"
-            }
-          />
-        ))}
+        {/* Additional Twinkling Elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          {[...Array(15)].map((_, i) => (
+            <FloatingOrb
+              key={i}
+              size={i % 5 === 0 ? "md" : "sm"}
+              className={`absolute twinkle`}
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animation="none"
+              delay={Math.random() * 3}
+              color={
+                i % 3 === 0 ? "#FFD700" : i % 3 === 1 ? "#87CEEB" : "#FFA500"
+              }
+            />
+          ))}
+        </div>
 
         {/* Larger floating elements */}
         {[...Array(3)].map((_, i) => (
@@ -188,7 +203,7 @@ export default function Contact() {
             className="text-center mb-16"
           >
             <h1
-              className="text-5xl md:text-7xl font-bold mb-6"
+              className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6"
               style={{ color: "var(--text-primary)" }}
             >
               The Observatory
@@ -197,12 +212,13 @@ export default function Contact() {
               className="text-xl md:text-2xl max-w-3xl mx-auto"
               style={{ color: "var(--text-secondary)" }}
             >
-              Under the starlit sky, let&apos;s begin a conversation that could spark
-              something extraordinary. Reach out and let&apos;s create together.
+              Under the starlit sky, let&apos;s begin a conversation that could
+              spark something extraordinary. Reach out and let&apos;s create
+              together.
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="flex flex-col md:flex-row gap-8 lg:gap-12">
             {/* Contact Form - Glass Greenhouse */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -210,7 +226,7 @@ export default function Contact() {
               transition={{ delay: 0.3, duration: 0.8 }}
             >
               <Card3D intensity={6} glowColor="var(--accent-primary)">
-                <GlassCard className="py-8 px-4 md:p-10" strong>
+                <GlassCard className="py-8 px-4 md:px-5 lg:p-10" strong>
                   <h2
                     className="text-3xl font-bold mb-8"
                     style={{ color: "var(--text-primary)" }}
@@ -272,8 +288,8 @@ export default function Contact() {
                           />
                         </Card3D>
                         {errors.email && (
-                        <p className="text-red-500 text-sm">{errors.email}</p>
-                      )}
+                          <p className="text-red-500 text-sm">{errors.email}</p>
+                        )}
                       </div>
                     </div>
 
@@ -381,7 +397,7 @@ export default function Contact() {
             >
               {/* Contact Details */}
               <Card3D intensity={8} glowColor="var(--accent-primary)">
-                <GlassCard className="p-8">
+                <GlassCard className="py-8 px-4 md:p-8">
                   <h3
                     className="text-2xl font-bold mb-6"
                     style={{ color: "var(--text-primary)" }}
@@ -414,7 +430,7 @@ export default function Contact() {
                               <Icon className="w-6 h-6 text-white" />
                             </div>
                           </Card3D>
-                          <div>
+                          <div className="max-w-full text-wrap">
                             <p
                               className="font-medium"
                               style={{ color: "var(--text-primary)" }}
@@ -422,7 +438,7 @@ export default function Contact() {
                               {info.label}
                             </p>
                             <p
-                              className="text-sm"
+                              className="text-sm text-wrap"
                               style={{ color: "var(--text-secondary)" }}
                             >
                               {info.value}
@@ -437,7 +453,7 @@ export default function Contact() {
 
               {/* Social Links */}
               <Card3D intensity={8} glowColor="var(--accent-primary)">
-                <GlassCard className="p-8">
+                <GlassCard className="py-8 px-4 md:p-8">
                   <h3
                     className="text-2xl font-bold mb-6"
                     style={{ color: "var(--text-primary)" }}
@@ -445,7 +461,7 @@ export default function Contact() {
                     Connect Online
                   </h3>
 
-                  <div className="flex space-x-4">
+                  <div className="flex flex-wrap items-center justify-start space-y-2 space-x-4">
                     {socialLinks.map((social, index) => {
                       const Icon = social.icon;
 
@@ -492,11 +508,11 @@ export default function Contact() {
                 transition={{ delay: 1.2, duration: 0.8 }}
               >
                 <Card3D intensity={6} glowColor="#10B981">
-                  <GlassCard className="p-6">
+                  <GlassCard className="py-8 px-4 md:p-6">
                     <div className="flex items-center space-x-3">
                       <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
                       <span
-                        className="font-medium"
+                        className="font-medium text-nowrap"
                         style={{ color: "var(--text-primary)" }}
                       >
                         Available for new projects
@@ -506,14 +522,15 @@ export default function Contact() {
                       className="text-sm mt-2"
                       style={{ color: "var(--text-secondary)" }}
                     >
-                      Currently accepting freelance and contract work. Let&apos;s
-                      build something amazing together!
+                      Currently accepting freelance and contract work.
+                      Let&apos;s build something amazing together!
                     </p>
                   </GlassCard>
                 </Card3D>
               </motion.div>
             </motion.div>
           </div>
+
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -522,9 +539,9 @@ export default function Contact() {
           >
             {/* Contact Details */}
             <Card3D intensity={8} glowColor="var(--accent-primary)">
-              <GlassCard className="p-8 max-w-2xl mx-auto">
+              <GlassCard className="py-8 px-4 md:px-8 max-w-2xl mx-auto">
                 <h3
-                  className="text-2xl font-bold mb-6"
+                  className="text-lg sm:text-2xl font-bold mb-6"
                   style={{ color: "var(--text-primary)" }}
                 >
                   Let&apos;s Build Something Amazing
@@ -534,9 +551,9 @@ export default function Contact() {
                   style={{ color: "var(--text-secondary)" }}
                 >
                   Whether you have a project in mind, want to collaborate, or
-                  just want to chat about technology and innovation, I&apos;d love to
-                  hear from you. Every great journey begins with a single
-                  conversation.
+                  just want to chat about technology and innovation, I&apos;d
+                  love to hear from you. Every great journey begins with a
+                  single conversation.
                 </p>
               </GlassCard>
             </Card3D>

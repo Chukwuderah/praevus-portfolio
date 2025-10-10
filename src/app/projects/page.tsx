@@ -6,6 +6,7 @@ import { ExternalLink, Github } from "lucide-react";
 import GlassCard from "@/components/shared/GlassCard";
 import Card3D from "@/components/shared/Card3D";
 import ParallaxContainer from "@/components/shared/ParallaxContainer";
+import { Stats } from "@/components/shared/Stats";
 
 const projects = [
   {
@@ -14,9 +15,9 @@ const projects = [
     description:
       "A personal portfolio website to showcase my projects and skills.",
     image: "/portfolio-site.png",
-    tags: ["Next.js", "TypeScript", "Tailwind", "Resend"],
-    github: "https://github.com",
-    live: "https://example.com",
+    tags: ["Next.js", "TypeScript", "Tailwind", "Resend", "3D"],
+    github: "https://github.com/Chukwuderah/praevus-portfolio",
+    live: "https://pleasant-chukwuderah.vercel.app",
     featured: false,
   },
   {
@@ -68,13 +69,20 @@ const projects = [
     id: 6,
     title: "Estate Management Platform",
     description:
-      "Interactive learning platform with video courses and progress tracking.",
+      "An App that helps you manage your properties and tenants with ease.",
     image: "/estate-sync.png",
     tags: ["Next.js", "Node.js", "Database", "Auth"],
     // github: "https://github.com",
     // live: "https://example.com",
     featured: true,
   },
+];
+
+const stats = [
+  { number: `${projects.length}+`, label: "Projects" },
+  { number: "50+", label: "Components" },
+  { number: "2+", label: "Years Experience" },
+  { number: "8+", label: "Technologies" },
 ];
 
 const filters = ["All", "Featured", "Upcoming"];
@@ -178,7 +186,7 @@ export default function Projects() {
                 <motion.button
                   key={filter}
                   onClick={() => setActiveFilter(filter)}
-                  className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                  className={`px-3 md:px-6 py-3 rounded-lg md:rounded-full font-medium transition-all duration-300 ${
                     activeFilter === filter ? "text-white" : "hover:bg-white/10"
                   }`}
                   style={{
@@ -355,56 +363,7 @@ export default function Projects() {
             transition={{ delay: 1, duration: 0.8 }}
             className="mt-20"
           >
-            <Card3D intensity={6} glowColor="var(--accent-primary)">
-              <GlassCard className="p-8">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                  <div>
-                    <div
-                      className="text-3xl font-bold mb-2"
-                      style={{ color: "var(--accent-primary)" }}
-                    >
-                      {projects.length}+
-                    </div>
-                    <div style={{ color: "var(--text-secondary)" }}>
-                      Projects
-                    </div>
-                  </div>
-                  <div>
-                    <div
-                      className="text-3xl font-bold mb-2"
-                      style={{ color: "var(--accent-primary)" }}
-                    >
-                      50+
-                    </div>
-                    <div style={{ color: "var(--text-secondary)" }}>
-                      Components
-                    </div>
-                  </div>
-                  <div>
-                    <div
-                      className="text-3xl font-bold mb-2"
-                      style={{ color: "var(--accent-primary)" }}
-                    >
-                      2+
-                    </div>
-                    <div style={{ color: "var(--text-secondary)" }}>
-                      Years Experience
-                    </div>
-                  </div>
-                  <div>
-                    <div
-                      className="text-3xl font-bold mb-2"
-                      style={{ color: "var(--accent-primary)" }}
-                    >
-                      8+
-                    </div>
-                    <div style={{ color: "var(--text-secondary)" }}>
-                      Technologies
-                    </div>
-                  </div>
-                </div>
-              </GlassCard>
-            </Card3D>
+            <Stats stats={stats} />
           </motion.div>
         </div>
       </div>

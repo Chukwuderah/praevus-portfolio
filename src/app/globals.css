@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Epilogue:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jacques+Francois+Shadow&family=Jaini+Purva&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik+Glitch&family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Epilogue:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jacques+Francois+Shadow&family=Jaini+Purva&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik+Glitch&family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -6,30 +6,30 @@
 
 :root {
   /* Light mode colors */
-  --mountbatten-pink: #997A8D;
+  --mountbatten-pink: #997a8d;
   --byzantium: #702963;
-  --russian-violet: #32174D;
-  --pearl: #EAE0D5;
-  --white-smoke: #F5F5F5;
-  
+  --russian-violet: #32174d;
+  --pearl: #eae0d5;
+  --white-smoke: #f5f5f5;
+
   /* Theme variables */
-  --bg-primary: #F5F5F5;
-  --bg-secondary: #EAE0D5;
-  --text-primary: #32174D;
+  --bg-primary: #f5f5f5;
+  --bg-secondary: #eae0d5;
+  --text-primary: #32174d;
   --text-secondary: #702963;
-  --accent-primary: #997A8D;
+  --accent-primary: #997a8d;
   --accent-secondary: #702963;
   --glass-bg: rgba(234, 224, 213, 0.25);
   --glass-border: rgba(153, 122, 141, 0.2);
 }
 
 [data-theme="dark"] {
-  --bg-primary: #32174D;
+  --bg-primary: #32174d;
   --bg-secondary: #702963;
-  --text-primary: #F5F5F5;
-  --text-secondary: #EAE0D5;
-  --accent-primary: #997A8D;
-  --accent-secondary: #EAE0D5;
+  --text-primary: #f5f5f5;
+  --text-secondary: #eae0d5;
+  --accent-primary: #997a8d;
+  --accent-secondary: #eae0d5;
   --glass-bg: rgba(112, 41, 99, 0.25);
   --glass-border: rgba(153, 122, 141, 0.3);
 }
@@ -69,7 +69,7 @@
     @apply border-border;
   }
   body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
     background: var(--bg-primary);
     color: var(--text-primary);
     transition: background-color 0.5s ease, color 0.5s ease;
@@ -102,29 +102,58 @@
   background: linear-gradient(135deg, #32174D 0%, #702963 50%, #997A8D 100%);
 } */
 
-.gradient-hero-light { 
-  background: linear-gradient(45deg, var(--white-smoke) 0%, var(--pearl) 30%, var(--mountbatten-pink) 60%, var(--byzantium) 100%);
+.gradient-hero-light {
+  background: linear-gradient(
+    45deg,
+    var(--white-smoke) 0%,
+    var(--pearl) 30%,
+    var(--mountbatten-pink) 60%,
+    var(--byzantium) 100%
+  );
 }
 
 .dark .gradient-hero-dark {
-  background: linear-gradient(180deg,var(--russian-violet) 0%,var(--byzantium) 50%,var(--russian-violet) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--russian-violet) 0%,
+    var(--byzantium) 50%,
+    var(--russian-violet) 100%
+  );
 }
 
 /* Orb animations */
 @keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  33% { transform: translateY(-10px) rotate(120deg); }
-  66% { transform: translateY(5px) rotate(240deg); }
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-10px) rotate(120deg);
+  }
+  66% {
+    transform: translateY(5px) rotate(240deg);
+  }
 }
 
 @keyframes orbit {
-  from { transform: rotate(0deg) translateX(60px) rotate(0deg); }
-  to { transform: rotate(360deg) translateX(60px) rotate(-360deg); }
+  from {
+    transform: rotate(0deg) translateX(60px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(60px) rotate(-360deg);
+  }
 }
 
 @keyframes twinkle {
-  0%, 100% { opacity: 0.7; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.1); }
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
 }
 
 .float {
@@ -175,8 +204,12 @@ html {
 }
 /* Enhanced animations */
 @keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 .shimmer {
@@ -185,7 +218,7 @@ html {
 }
 
 .shimmer::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -201,6 +234,67 @@ html {
 }
 
 .playfair-display {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-style: normal;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-slide {
+  animation: slide 20s linear infinite;
+}
+
+.pause-slide {
+  animation-play-state: paused;
+}
+
+.group-hover\:pause-slide:hover .animate-slide {
+  animation-play-state: paused;
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.stats-marquee {
+  animation: slide-left 25s linear infinite;
+}
+
+/* Reverse direction in dark mode */
+.dark .stats-marquee {
+  animation: slide-right 25s linear infinite;
+}
+
+/* Smooth pause on hover */
+.pause-slide {
+  animation-play-state: paused !important;
+}
+.group-hover\:pause-slide:hover .stats-marquee {
+  animation-play-state: paused !important;
+}
+
+.stats-marquee,
+.dark .stats-marquee {
+  transition: all 0.3s ease-in-out;
 }

@@ -8,7 +8,7 @@ import { NavProvider, useNav } from "@/context/NavContext";
 import Navigation from "@/components/layout/Navigation";
 import PageTransition from "@/components/shared/PageTransition";
 import { ThemeToggle } from "@/components/shared/ThemeToggle";
-import { Toaster } from "react-hot-toast";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 

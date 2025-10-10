@@ -48,7 +48,7 @@ const skills = [
   "CSS3",
   "Figma",
   "Framer Motion",
-  "Version Control (Git)",
+  "Version Control",
 ];
 
 export default function About() {
@@ -143,9 +143,9 @@ export default function About() {
                     problems into simple, elegant solutions.
                   </p>
                   <p>
-                    When I&apos;m not coding, you&apos;ll find me exploring new design
-                    trends, contributing to open-source projects, or sharing
-                    knowledge with the developer community.
+                    When I&apos;m not coding, you&apos;ll find me exploring new
+                    design trends, contributing to open-source projects, or
+                    sharing knowledge with the developer community.
                   </p>
                 </div>
               </GlassCard>
@@ -269,11 +269,14 @@ export default function About() {
             transition={{ delay: 0.8 }}
             className="mt-16 text-center"
           >
-            <GlassCard className="glass-card p-8 max-w-2xl mx-auto">
+            <GlassCard className="glass-card py-8 px-4 md:px-8 max-w-2xl mx-auto">
               <h2 className="mansion-heading text-2xl font-bold mb-4">
                 Philosophy
               </h2>
-              <p className="leading-relaxed">
+              <p
+                style={{ color: "var(--text-secondary)" }}
+                className="leading-relaxed"
+              >
                 I believe that great software is not just about clean code and
                 elegant algorithms, it&apos;s about creating experiences that
                 feel magical, intuitive, and genuinely helpful to the people who
