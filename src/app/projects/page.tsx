@@ -81,8 +81,8 @@ const projects = [
 const stats = [
   { number: `${projects.length}+`, label: "Projects" },
   { number: "50+", label: "Components" },
-  { number: "2+", label: "Years Experience" },
-  { number: "8+", label: "Technologies" },
+  { number: "3+", label: "Years Experience" },
+  { number: "20+", label: "Technologies" },
 ];
 
 const filters = ["All", "Featured", "Upcoming"];
@@ -235,6 +235,7 @@ export default function Projects() {
                           scale: hoveredProject === project.id ? 1.15 : 1,
                         }}
                         transition={{ duration: 0.6, ease: "easeOut" }}
+                        loading="lazy"
                       />
 
                       {/* Enhanced Spotlight Effect */}

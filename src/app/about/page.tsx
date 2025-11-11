@@ -9,7 +9,7 @@ import FloatingOrb from "@/components/shared/FloatingOrb";
 const timelineEvents = [
   {
     year: "2025 - Date",
-    title: "Frontend Developer",
+    title: "Frontend Engineer",
     company: "Estate Sync",
     description:
       "Leading frontend architecture and development for a real estate SaaS platform",
@@ -138,9 +138,9 @@ export default function About() {
                     accessible, and performant web experiences.
                   </p>
                   <p>
-                    With over 2 years of experience, I specialize in React,
-                    Next.js, and modern CSS frameworks. I love turning complex
-                    problems into simple, elegant solutions.
+                    With 3 years of experience, I specialize in React, Next.js,
+                    and modern CSS frameworks. I love turning complex problems
+                    into simple, elegant solutions.
                   </p>
                   <p>
                     When I&apos;m not coding, you&apos;ll find me exploring new
@@ -186,13 +186,13 @@ export default function About() {
             </motion.div>
           </div>
 
-          {/* Timeline */}
+          {/* My Journey */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.8 }}
           >
-            <GlassCard className="p-8 md:p-12">
+            <GlassCard className="py-8 px-4 md:p-12">
               <h2
                 className="text-3xl font-bold mb-12 text-center"
                 style={{ color: "var(--text-primary)" }}
@@ -215,20 +215,45 @@ export default function About() {
                       <motion.div
                         key={event.year}
                         className="relative flex items-start space-x-6"
-                        initial={{ opacity: 0, x: -30 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 1 + index * 0.2, duration: 0.6 }}
+                        initial={{ opacity: 0, x: -50, y: 20 }}
+                        whileInView={{ opacity: 1, x: 0, y: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{
+                          delay: index * 0.2,
+                          type: "spring",
+                          stiffness: 120,
+                          damping: 18,
+                        }}
                       >
                         {/* Timeline Icon */}
-                        <div
+                        <motion.div
                           className="flex items-center justify-center w-16 h-16 rounded-full glass-strong z-10"
                           style={{ backgroundColor: "var(--accent-primary)" }}
+                          initial={{ scale: 0.5, rotate: -20 }}
+                          whileInView={{ scale: 1, rotate: 0 }}
+                          viewport={{ once: true }}
+                          transition={{
+                            delay: index * 0.2 + 0.1,
+                            type: "spring",
+                            stiffness: 200,
+                            damping: 14,
+                          }}
                         >
                           <Icon className="w-6 h-6 text-white" />
-                        </div>
+                        </motion.div>
 
                         {/* Content */}
-                        <div className="flex-1 pb-8">
+                        <motion.div
+                          className="flex-1 pb-8"
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{
+                            delay: index * 0.2 + 0.15,
+                            duration: 0.6,
+                            ease: "easeOut",
+                          }}
+                        >
                           <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
                             <h3
                               className="text-xl font-bold"
@@ -237,7 +262,7 @@ export default function About() {
                               {event.title}
                             </h3>
                             <span
-                              className="text-sm font-medium px-3 py-1 rounded-full glass-strong"
+                              className="text-sm font-medium w-fit px-3 py-1 rounded-full glass-strong"
                               style={{ color: "var(--accent-primary)" }}
                             >
                               {event.year}
@@ -255,7 +280,7 @@ export default function About() {
                           >
                             {event.description}
                           </p>
-                        </div>
+                        </motion.div>
                       </motion.div>
                     );
                   })}
@@ -263,6 +288,7 @@ export default function About() {
               </div>
             </GlassCard>
           </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
