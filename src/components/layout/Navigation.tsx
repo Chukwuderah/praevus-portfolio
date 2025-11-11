@@ -4,15 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Home,
-  User,
-  Briefcase,
-  BookOpen,
-  Mail,
-  Menu,
-  X,
-} from "lucide-react";
+import { Home, User, Briefcase, BookOpen, Mail, Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/shared/ThemeToggle";
 import { cn } from "@/lib/utils";
 
@@ -172,7 +164,7 @@ export default function Navigation() {
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "spring", stiffness: 100, damping: 20 }}
+              transition={{ type: "spring", stiffness: 100, damping: 20, duration: 0.3 }}
               className="fixed top-0 right-0 w-[70%] h-screen bg-[var(--bg-primary)] z-50 pl-8 pt-10 flex flex-col space-y-8"
             >
               <button
@@ -197,6 +189,9 @@ export default function Navigation() {
                           ? "text-[var(--accent-primary)]"
                           : "hover:text-white"
                       )}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.05 * item.href.length }}
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}
                     >
