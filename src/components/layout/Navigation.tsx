@@ -12,7 +12,7 @@ const navItems = [
   { href: "/", label: "Welcome Hall", icon: Home },
   { href: "/about", label: "Library", icon: User },
   { href: "/projects", label: "Gallery", icon: Briefcase },
-  { href: "/blog", label: "Study", icon: BookOpen },
+  // { href: "/blog", label: "Study", icon: BookOpen },
   { href: "/contact", label: "Observatory", icon: Mail },
 ];
 

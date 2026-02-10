@@ -6,7 +6,7 @@ import { ExternalLink, Github } from "lucide-react";
 import GlassCard from "@/components/shared/GlassCard";
 import Card3D from "@/components/shared/Card3D";
 import ParallaxContainer from "@/components/shared/ParallaxContainer";
-import { Stats } from "@/components/shared/Stats";
+import { Stats } from "@/components/project/Stats";
 
 const projects = [
   {
@@ -14,8 +14,8 @@ const projects = [
     title: "Porfolio Website",
     description:
       "A personal portfolio website to showcase my projects and skills.",
-    image: "/portfolio-site.png",
-    tags: ["Next.js", "TypeScript", "Tailwind", "Resend", "3D"],
+    image: "/project/portfolio-site.png",
+    tags: ["Next.js", "TS", "Tailwind", "Resend", "3D"],
     github: "https://github.com/Chukwuderah/praevus-portfolio",
     live: "https://pleasant-chukwuderah.vercel.app",
     featured: false,
@@ -25,7 +25,7 @@ const projects = [
     title: "Brief Generator App",
     description:
       "OpenBrief is an AI-powered brief generator for freelancers and creative professionals.",
-    image: "/openbrief.png",
+    image: "/project/openbrief.png",
     tags: ["Next.js", "TypeScript", "Shadcn/ui", "API"],
     github: "https://github.com/Chukwuderah/openbrief",
     live: "https://openbrief.vercel.app/",
@@ -36,10 +36,9 @@ const projects = [
     title: "SyncUp - Smart Scheduling",
     description:
       "A modern wep app that simplifies scheduling and team collaboration.",
-    image: "/syncup.png",
+    image: "/project/syncup.png",
     tags: ["Next.js", "TypeScript", "Resend", "Supabase"],
     github: "https://github.com/Chukwuderah/SyncUp",
-    live: "/",
     featured: false,
     upcoming: "true",
   },
@@ -48,8 +47,8 @@ const projects = [
     title: "Shade Maker",
     description:
       "A dynamic color gradient generator built with React and Framer Motion.",
-    image: "/shade-maker.png",
-    tags: ["React", "Tailwind", "Framer Motion", "TinyColor 2"],
+    image: "/project/shade-maker.png",
+    tags: ["React", "Framer Motion", "TinyColor 2"],
     github: "https://github.com/Chukwuderah/ShadeMaker",
     live: "https://shade-maker-wine.vercel.app/",
     featured: false,
@@ -59,7 +58,7 @@ const projects = [
     title: "Banter Box",
     description:
       "AI-powered chat interface with dynamic response and voice input/output.",
-    image: "/banter-box.png",
+    image: "/project/banter-box.png",
     tags: ["Next.js", "APIs", "webspeechAPI", "TypeScript"],
     github: "https://github.com/Chukwuderah/BanterBox",
     live: "https://banter-box-nu.vercel.app/",
@@ -70,10 +69,8 @@ const projects = [
     title: "Estate Management Platform",
     description:
       "An App that helps you manage your properties and tenants with ease.",
-    image: "/estate-sync.png",
+    image: "/project/estate-sync.png",
     tags: ["Next.js", "Node.js", "Database", "Auth"],
-    // github: "https://github.com",
-    // live: "https://example.com",
     featured: true,
   },
 ];
@@ -100,15 +97,8 @@ export default function Projects() {
     return true;
   });
 
-  // const handleMouseMove = (e: React.MouseEvent) => {
-  //   setMousePosition({ x: e.clientX, y: e.clientY });
-  // };
-
   return (
-    <ParallaxContainer
-      className="min-h-screen relative"
-      //   onMouseMove={handleMouseMove}
-    >
+    <ParallaxContainer className="min-h-screen relative">
       {/* Gallery Background */}
       <div
         className="absolute inset-0"
@@ -269,26 +259,31 @@ export default function Projects() {
                         transition={{ duration: 0.3 }}
                         style={{ transform: "translateZ(10px)" }}
                       >
-                        <Card3D intensity={8}>
-                          <a
-                            href={project.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-3 glass-3d rounded-full transition-colors"
-                          >
-                            <Github className="w-6 h-6 text-white" />
-                          </a>
-                        </Card3D>
-                        <Card3D intensity={8}>
-                          <a
-                            href={project.live}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-3 glass-3d rounded-full transition-colors"
-                          >
-                            <ExternalLink className="w-6 h-6 text-white" />
-                          </a>
-                        </Card3D>
+                        {project.github && (
+                          <Card3D intensity={8}>
+                            <a
+                              href={project.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="p-3 glass-3d rounded-full transition-colors"
+                            >
+                              <Github className="w-6 h-6 text-white" />
+                            </a>
+                          </Card3D>
+                        )}
+
+                        {project.live && (
+                          <Card3D intensity={8}>
+                            <a
+                              href={project.live}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="p-3 glass-3d rounded-full transition-colors"
+                            >
+                              <ExternalLink className="w-6 h-6 text-white" />
+                            </a>
+                          </Card3D>
+                        )}
                       </motion.div>
 
                       {/* Featured Badge */}

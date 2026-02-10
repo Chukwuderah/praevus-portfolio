@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Calendar, MapPin, Award, BookOpen } from "lucide-react";
 import GlassCard from "@/components/shared/GlassCard";
+import JourneyTimeline from "@/components/about/JourneyTimeline";
 import FloatingOrb from "@/components/shared/FloatingOrb";
 
 const timelineEvents = [
@@ -40,12 +41,12 @@ const timelineEvents = [
 
 const skills = [
   "React",
+  "React Native",
   "Next.js",
   "TypeScript",
   "JavaScript",
   "Tailwind CSS",
-  "HTML5",
-  "CSS3",
+  "HTML5 & CSS3",
   "Figma",
   "Framer Motion",
   "Version Control",
@@ -187,107 +188,7 @@ export default function About() {
           </div>
 
           {/* My Journey */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.8 }}
-          >
-            <GlassCard className="py-8 px-4 md:p-12">
-              <h2
-                className="text-3xl font-bold mb-12 text-center"
-                style={{ color: "var(--text-primary)" }}
-              >
-                My Journey
-              </h2>
-
-              <div className="relative">
-                {/* Timeline Line */}
-                <div
-                  className="absolute left-8 top-0 bottom-0 w-0.5"
-                  style={{ backgroundColor: "var(--accent-primary)" }}
-                />
-
-                <div className="space-y-12">
-                  {timelineEvents.map((event, index) => {
-                    const Icon = event.icon;
-
-                    return (
-                      <motion.div
-                        key={event.year}
-                        className="relative flex items-start space-x-6"
-                        initial={{ opacity: 0, x: -50, y: 20 }}
-                        whileInView={{ opacity: 1, x: 0, y: 0 }}
-                        viewport={{ once: true, amount: 0.2 }}
-                        transition={{
-                          delay: index * 0.2,
-                          type: "spring",
-                          stiffness: 120,
-                          damping: 18,
-                        }}
-                      >
-                        {/* Timeline Icon */}
-                        <motion.div
-                          className="flex items-center justify-center w-16 h-16 rounded-full glass-strong z-10"
-                          style={{ backgroundColor: "var(--accent-primary)" }}
-                          initial={{ scale: 0.5, rotate: -20 }}
-                          whileInView={{ scale: 1, rotate: 0 }}
-                          viewport={{ once: true }}
-                          transition={{
-                            delay: index * 0.2 + 0.1,
-                            type: "spring",
-                            stiffness: 200,
-                            damping: 14,
-                          }}
-                        >
-                          <Icon className="w-6 h-6 text-white" />
-                        </motion.div>
-
-                        {/* Content */}
-                        <motion.div
-                          className="flex-1 pb-8"
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true }}
-                          transition={{
-                            delay: index * 0.2 + 0.15,
-                            duration: 0.6,
-                            ease: "easeOut",
-                          }}
-                        >
-                          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
-                            <h3
-                              className="text-xl font-bold"
-                              style={{ color: "var(--text-primary)" }}
-                            >
-                              {event.title}
-                            </h3>
-                            <span
-                              className="text-sm font-medium w-fit px-3 py-1 rounded-full glass-strong"
-                              style={{ color: "var(--accent-primary)" }}
-                            >
-                              {event.year}
-                            </span>
-                          </div>
-                          <p
-                            className="text-lg font-medium mb-2"
-                            style={{ color: "var(--accent-primary)" }}
-                          >
-                            {event.company}
-                          </p>
-                          <p
-                            className="text-base"
-                            style={{ color: "var(--text-secondary)" }}
-                          >
-                            {event.description}
-                          </p>
-                        </motion.div>
-                      </motion.div>
-                    );
-                  })}
-                </div>
-              </div>
-            </GlassCard>
-          </motion.div>
+       <JourneyTimeline timelineEvents={timelineEvents} />
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}

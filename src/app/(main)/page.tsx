@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Code, Palette, Zap, Heart } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import GlassCard from "@/components/shared/GlassCard";
 import FloatingOrb from "@/components/shared/FloatingOrb";
 import Card3D from "@/components/shared/Card3D";
@@ -10,13 +10,7 @@ import ParallaxContainer from "@/components/shared/ParallaxContainer";
 import { OrbitingTechIcons } from "@/components/3D/OrbitingIcons";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-
-const techIcons = [
-  { icon: Code, label: "React", delay: 0 },
-  { icon: Palette, label: "Design", delay: 0.5 },
-  { icon: Zap, label: "Performance", delay: 1 },
-  { icon: Heart, label: "Passion", delay: 1.5 },
-];
+import TechOrbit from "@/components/3D/TechOrbit";
 
 export default function Home() {
   return (
@@ -171,73 +165,20 @@ export default function Home() {
             </Card3D>
           </motion.div>
 
-          {/* Orbiting Tech Icons */}
-          <motion.div
-            className="relative w-80 h-80 mx-auto"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 1 }}
-          >
-            <div className="absolute inset-0 flex items-center justify-center">
-              <Card3D intensity={5}>
-                <GlassCard className="w-24 h-24 flex items-center justify-center">
-                  <Code
-                    className="w-10 h-10"
-                    style={{ color: "var(--accent-primary)" }}
-                  />
-                </GlassCard>
-              </Card3D>
-            </div>
-
-            {techIcons.map((tech, index) => {
-              const Icon = tech.icon;
-              const angle = (360 / techIcons.length) * index;
-
-              return (
-                <motion.div
-                  key={tech.label}
-                  className="absolute top-1/2 left-1/2 w-16 h-16"
-                  style={{
-                    transformOrigin: "0 0",
-                  }}
-                  animate={{
-                    rotate: [angle, angle + 360],
-                  }}
-                  transition={{
-                    duration: 25,
-                    ease: "linear",
-                    repeat: Infinity,
-                    delay: tech.delay,
-                  }}
-                >
-                  <motion.div
-                    className="absolute -translate-x-8 -translate-y-8"
-                    style={{
-                      transform: "translateX(120px) translateY(-8px)",
-                    }}
-                    animate={{
-                      rotate: [0, -360],
-                    }}
-                    transition={{
-                      duration: 25,
-                      ease: "linear",
-                      repeat: Infinity,
-                      delay: tech.delay,
-                    }}
-                  >
-                    <Card3D intensity={8}>
-                      <GlassCard className="w-16 h-16 flex items-center justify-center hover:bg-white/20 transition-colors">
-                        <Icon
-                          className="w-6 h-6"
-                          style={{ color: "var(--accent-primary)" }}
-                        />
-                      </GlassCard>
-                    </Card3D>
-                  </motion.div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
+          <TechOrbit
+            images={[
+              { src: "/tech/react.png", alt: "React" },
+              { src: "/tech/reactnative.png", alt: "React Native" },
+              { src: "/tech/nextjs.jpg", alt: "Next.js" },
+              { src: "/tech/typescript.png", alt: "TypeScript" },
+              { src: "/tech/javascript.png", alt: "JavaScript" },
+              { src: "/tech/tailwindcss.png", alt: "Tailwind CSS" },
+              { src: "/tech/html_css.png", alt: "HTML & CSS" },
+              { src: "/tech/figma.png", alt: "Figma" },
+              { src: "/tech/framer.png", alt: "Framer Motion" },
+              { src: "/tech/versioncontrol.png", alt: "Version Control" },
+            ]}
+          />
 
           {/* Call to Action */}
           <motion.div
@@ -251,8 +192,8 @@ export default function Home() {
                 Ready to Build Something Amazing?
               </h2>
               <p className="text-[var(--text-secondary)] mb-6">
-                I&apos;m always excited to work on new projects and collaborate with
-                passionate people. Let&apos;s turn your ideas into reality.
+                I&apos;m always excited to work on new projects and collaborate
+                with passionate people. Let&apos;s turn your ideas into reality.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center w-full mt-6">
                 <Link href="/about">
@@ -263,13 +204,14 @@ export default function Home() {
                  text-[var(--accent-primary)] 
                  hover:bg-[var(--accent-primary)] 
                  hover:text-[var(--bg-primary)] 
-                 transition-colors"
+                 transition-colors
+                 duration-200 ease-in-out"
                   >
                     Learn More About Me
                   </Button>
                 </Link>
 
-                <Link href="/blog">
+                {/* <Link href="/blog">
                   <Button
                     variant="ghost"
                     className="w-full border border-[var(--accent-primary)]
@@ -279,7 +221,7 @@ export default function Home() {
                   >
                     Read My Thoughts
                   </Button>
-                </Link>
+                </Link> */}
               </div>
             </GlassCard>
           </motion.div>

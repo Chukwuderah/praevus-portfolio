@@ -5,20 +5,15 @@ import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/lib/theme";
-import { NavProvider, useNav } from "@/context/NavContext";
 import PageTransition from "@/components/shared/PageTransition";
 import { ThemeToggle } from "@/components/shared/ThemeToggle";
 import { Toaster } from "sonner";
-
-const Navigation = dynamic(() => import("@/components/layout/Navigation"), {
-  ssr: false,
-});
 
 const CursorFollowerLazy = dynamic(
   () => import("@/components/3D/CursorFollower"),
   {
     ssr: false,
-  }
+  },
 );
 
 export function CursorFollowerWrapper() {
@@ -38,17 +33,6 @@ export function CursorFollowerWrapper() {
 }
 
 const inter = Inter({ subsets: ["latin"] });
-
-function LayoutContent({ children }: { children: React.ReactNode }) {
-  const { showNav } = useNav();
-
-  return (
-    <div>
-      {showNav && <Navigation />}
-      <main>{children}</main>
-    </div>
-  );
-}
 
 export default function RootLayout({
   children,
@@ -93,17 +77,13 @@ export default function RootLayout({
       <body className={inter.className}>
         <CursorFollowerWrapper />
         <ThemeProvider>
-          <NavProvider>
-            <PageTransition>
-              <main className="min-h-screen">
-                <ThemeToggle variant="orb" />
-                <LayoutContent>
-                  {children}
-                  <Toaster position="top-right" />
-                </LayoutContent>
-              </main>
-            </PageTransition>
-          </NavProvider>
+          <PageTransition>
+            <main className="min-h-screen">
+              <ThemeToggle variant="orb" />
+              {children}
+              <Toaster position="top-right" />
+            </main>
+          </PageTransition>
         </ThemeProvider>
       </body>
     </html>
