@@ -301,8 +301,8 @@ html {
 
 .orbit-box {
   position: relative;
-  width: 220px;
-  height: 220px;
+  width: 200px;
+  height: 200px;
   transform-style: preserve-3d;
   animation: orbit-spin 20s linear infinite;
 }

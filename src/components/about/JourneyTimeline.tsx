@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import GlassCard from "@/components/shared/GlassCard";
 
 interface TimelineEvent {
@@ -13,40 +13,30 @@ interface JourneyTimelineProps {
   timelineEvents: TimelineEvent[];
 }
 
-const itemVariants = {
+const containerVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants: Variants = {
   hidden: {
     opacity: 0,
-    x: -50,
-    y: 20,
+    x: -80,
+    filter: "blur(8px)",
   },
   visible: {
     opacity: 1,
     x: 0,
-    y: 0,
-  },
-};
-
-const iconVariants = {
-  hidden: {
-    scale: 0.5,
-    rotate: -20,
-    opacity: 0,
-  },
-  visible: {
-    scale: 1,
-    rotate: 0,
-    opacity: 1,
-  },
-};
-
-const contentVariants = {
-  hidden: {
-    opacity: 0,
-    y: 20,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
+    filter: "blur(0px)",
+    transition: {
+      type: "spring",
+      stiffness: 120,
+      damping: 18,
+    },
   },
 };
 
@@ -55,11 +45,11 @@ export default function JourneyTimeline({
 }: JourneyTimelineProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.7, duration: 0.8 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
     >
-      <GlassCard className="py-8 px-4 md:p-12">
+      <GlassCard className="py-8 px-4 md:p-12 relative overflow-hidden">
         <h2
           className="text-3xl font-bold mb-12 text-center"
           style={{ color: "var(--text-primary)" }}
@@ -68,14 +58,24 @@ export default function JourneyTimeline({
         </h2>
 
         <div className="relative">
-          {/* Timeline Line */}
-          <div
-            className="absolute left-8 top-0 bottom-0 w-0.5"
+          {/* Animated Timeline Line */}
+          <motion.div
+            className="absolute left-8 top-0 w-0.5"
             style={{ backgroundColor: "var(--accent-primary)" }}
+            initial={{ height: 0 }}
+            whileInView={{ height: "100%" }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
           />
 
-          <div className="space-y-12">
-            {timelineEvents.map((event, index) => {
+          <motion.div
+            className="space-y-16"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+          >
+            {timelineEvents.map((event) => {
               const Icon = event.icon;
 
               return (
@@ -83,29 +83,25 @@ export default function JourneyTimeline({
                   key={`${event.year}-${event.title}`}
                   className="relative flex items-start space-x-6"
                   variants={itemVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: false, amount: 0.2 }}
-                  transition={{
-                    delay: index * 0.15,
-                    type: "spring",
-                    stiffness: 120,
-                    damping: 18,
-                  }}
                 >
-                  {/* Icon */}
+                  {/* Glowing Icon */}
                   <motion.div
-                    className="flex items-center justify-center w-16 h-16 rounded-full glass-strong z-10"
-                    style={{ backgroundColor: "var(--accent-primary)" }}
-                    variants={iconVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: false }}
+                    className="flex items-center justify-center w-16 h-16 rounded-full z-10 relative"
+                    style={{
+                      backgroundColor: "var(--accent-primary)",
+                    }}
+                    whileHover={{ scale: 1.1 }}
+                    animate={{
+                      boxShadow: [
+                        "0 0 0px var(--accent-primary)",
+                        "0 0 20px var(--accent-primary)",
+                        "0 0 0px var(--accent-primary)",
+                      ],
+                    }}
                     transition={{
-                      delay: index * 0.15 + 0.1,
-                      type: "spring",
-                      stiffness: 200,
-                      damping: 14,
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
                     }}
                   >
                     <Icon className="w-6 h-6 text-white" />
@@ -114,14 +110,15 @@ export default function JourneyTimeline({
                   {/* Content */}
                   <motion.div
                     className="flex-1 pb-8"
-                    variants={contentVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: false }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
                     transition={{
-                      delay: index * 0.15 + 0.15,
                       duration: 0.6,
                       ease: "easeOut",
+                    }}
+                    animate={{
+                      y: [0, -4, 0],
                     }}
                   >
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
@@ -156,7 +153,7 @@ export default function JourneyTimeline({
                 </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </GlassCard>
     </motion.div>

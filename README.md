@@ -1,6 +1,6 @@
-# Praevus Portfolio
+# Pleasant Portfolio
 
-Welcome to Praevus Portfolio — my digital home, built to showcase my work, personality, and technical craftsmanship as a frontend engineer. This site is more than a resume — it’s an evolving expression of who I am as a builder, designer, and creator.
+Welcome to Pleasant (Suavis) Portfolio — my digital home, built to showcase my work, personality, and technical craftsmanship as a frontend engineer. This site is more than a resume — it’s an evolving expression of who I am as a builder, designer, and creator.
 
 Built with a blend of precision, performance, and motion, this portfolio reflects the balance between clean engineering and creative storytelling.
 
@@ -72,10 +72,10 @@ praevus-portfolio/
 └── public/             # Static assets and metadata
 ```
 
-# About Praevus
+# About Suavis
 
 I’m Pleasant, a Frontend Engineer who blends design, interactivity, and code to craft thoughtful digital experiences.
-This portfolio serves as my professional playground — where creativity meets execution.
+This portfolio serves as my professional playground, where creativity meets execution.
 
 If you’re a client, collaborator, or tech enthusiast, feel free to get in touch
  or drop a message via the contact form.

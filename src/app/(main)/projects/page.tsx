@@ -73,6 +73,16 @@ const projects = [
     tags: ["Next.js", "Node.js", "Database", "Auth"],
     featured: true,
   },
+  {
+    id: 7,
+    title: "Surespot Admin Dashboard",
+    description:
+      "A sleek dashboard for monitoring and managing Surespot's mobile app performance and user engagement.",
+    image: "/project/surespot.png",
+    tags: ["Next.js", "Recharts", "TypeScript", "React"],
+    github: "https://github.com/Chukwuderah/surespot-admin-dashboard",
+    featured: true,
+  },
 ];
 
 const stats = [
@@ -197,7 +207,7 @@ export default function Projects() {
           </motion.div>
 
           {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8 auto-rows-fr">
             {filteredProjects.map((project, index) => (
               <motion.div
                 key={project.id}
@@ -206,13 +216,15 @@ export default function Projects() {
                 transition={{ delay: 0.3 + index * 0.1, duration: 0.6 }}
                 onHoverStart={() => setHoveredProject(project.id)}
                 onHoverEnd={() => setHoveredProject(null)}
+                className="h-full"
               >
                 <Card3D
                   intensity={hoveredProject === project.id ? 15 : 8}
                   glowColor="var(--accent-primary)"
+                  className="h-full"
                 >
                   <GlassCard
-                    className="overflow-hidden group cursor-pointer transition-all duration-500"
+                    className="h-full flex flex-col overflow-hidden group cursor-pointer transition-all duration-500"
                     whileHover={{ y: -15, scale: 1.03 }}
                   >
                     {/* Project Image */}
@@ -251,10 +263,16 @@ export default function Projects() {
 
                       {/* Enhanced Overlay */}
                       <motion.div
-                        className="absolute inset-0 bg-black/70 flex items-center justify-center space-x-4"
+                        className="absolute inset-0 bg-black/70 flex items-center justify-center space-x-4 opacity-100 md:opacity-0"
                         initial={{ opacity: 0 }}
                         animate={{
-                          opacity: hoveredProject === project.id ? 1 : 0,
+                          opacity:
+                            typeof window !== "undefined" &&
+                            window.innerWidth >= 768
+                              ? hoveredProject === project.id
+                                ? 1
+                                : 0
+                              : 1,
                         }}
                         transition={{ duration: 0.3 }}
                         style={{ transform: "translateZ(10px)" }}
@@ -319,7 +337,7 @@ export default function Projects() {
                     </div>
 
                     {/* Project Info */}
-                    <div className="p-6">
+                    <div className="py-6 px-3 lg:px-6 flex flex-col flex-grow">
                       <h3
                         className="text-xl font-bold mb-2"
                         style={{ color: "var(--text-primary)" }}
@@ -334,7 +352,7 @@ export default function Projects() {
                       </p>
 
                       {/* Tags */}
-                      <div className="flex flex-wrap gap-2">
+                      <div className="mt-auto flex flex-wrap gap-2">
                         {project.tags.map((tag) => (
                           <span
                             key={tag}

@@ -2,42 +2,10 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Calendar, MapPin, Award, BookOpen } from "lucide-react";
 import GlassCard from "@/components/shared/GlassCard";
-import JourneyTimeline from "@/components/about/JourneyTimeline";
 import FloatingOrb from "@/components/shared/FloatingOrb";
-
-const timelineEvents = [
-  {
-    year: "2025 - Date",
-    title: "Frontend Engineer",
-    company: "Estate Sync",
-    description:
-      "Leading frontend architecture and development for a real estate SaaS platform",
-    icon: Award,
-  },
-  {
-    year: "2025",
-    title: "Frontend Developer",
-    company: "Rooster Africa",
-    description: "Built responsive web applications using React and Next.js",
-    icon: BookOpen,
-  },
-  {
-    year: "2024",
-    title: "Junior Developer",
-    company: "ThoughtOut NG",
-    description: "Started my journey in web development with modern frameworks",
-    icon: Calendar,
-  },
-  {
-    year: "2023",
-    title: "Computer Science",
-    company: "Lagos State University",
-    description: "Bachelor of Science in Computer Science",
-    icon: MapPin,
-  },
-];
+import CoreDirectives from "@/components/about/CoreDirectives";
+import BuildSystemBlueprint from "@/components/about/BuildSystemBlueprint";
 
 const skills = [
   "React",
@@ -50,6 +18,8 @@ const skills = [
   "Figma",
   "Framer Motion",
   "Version Control",
+  "Performance Optimization",
+  "Accessibility Best Practices",
 ];
 
 export default function About() {
@@ -74,14 +44,14 @@ export default function About() {
               i === 0
                 ? "top-32 left-10"
                 : i === 1
-                ? "top-20 right-20"
-                : i === 2
-                ? "top-1/2 left-16"
-                : i === 3
-                ? "bottom-1/3 right-12"
-                : i === 4
-                ? "bottom-40 left-1/3"
-                : "top-2/3 right-1/4"
+                  ? "top-20 right-20"
+                  : i === 2
+                    ? "top-1/2 left-16"
+                    : i === 3
+                      ? "bottom-1/3 right-12"
+                      : i === 4
+                        ? "bottom-40 left-1/3"
+                        : "top-2/3 right-1/4"
             }`}
             animation="twinkle"
             delay={i * 0.5}
@@ -130,23 +100,23 @@ export default function About() {
                   About Me
                 </h2>
                 <div
-                  className="space-y-4 text-lg"
+                  className="space-y-4 text-lg text-justify sm:text-left"
                   style={{ color: "var(--text-secondary)" }}
                 >
                   <p>
-                    Welcome to my digital library! I&apos;m a passionate
+                    I am Pleasant Chukwuderah (Suavis),  an experienced
                     frontend developer who believes in creating beautiful,
-                    accessible, and performant web experiences.
+                    accessible, and performant software experiences be it web or mobile.
                   </p>
                   <p>
                     With 3 years of experience, I specialize in React, Next.js,
-                    and modern CSS frameworks. I love turning complex problems
+                    and modern CSS frameworks, with proven track record of creating scalable and maintainable applications. I love turning complex problems
                     into simple, elegant solutions.
                   </p>
                   <p>
                     When I&apos;m not coding, you&apos;ll find me exploring new
-                    design trends, contributing to open-source projects, or
-                    sharing knowledge with the developer community.
+                    design trends, contributing to open-source projects,
+                    sharing knowledge with the developer community, or watching cartoons.
                   </p>
                 </div>
               </GlassCard>
@@ -187,8 +157,27 @@ export default function About() {
             </motion.div>
           </div>
 
-          {/* My Journey */}
-       <JourneyTimeline timelineEvents={timelineEvents} />
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center space-y-4 mb-6"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold">
+              Operating System: Suavis
+            </h2>
+            <p className="text-xl md:text-2xl max-w-3xl mx-auto"
+              style={{ color: "var(--text-secondary)" }}
+            >
+              How I think. How I build. Where I&apos;m headed.
+            </p>
+          </motion.div>
+
+          <div className="space-y-16">
+            <CoreDirectives />
+            <BuildSystemBlueprint />
+          </div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
