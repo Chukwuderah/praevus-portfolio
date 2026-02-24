@@ -6,7 +6,7 @@ import { ExternalLink, Github } from "lucide-react";
 import GlassCard from "@/components/shared/GlassCard";
 import Card3D from "@/components/shared/Card3D";
 import ParallaxContainer from "@/components/shared/ParallaxContainer";
-import { Stats } from "@/components/shared/Stats";
+import { Stats } from "@/components/project/Stats";
 
 const projects = [
   {
@@ -14,8 +14,8 @@ const projects = [
     title: "Porfolio Website",
     description:
       "A personal portfolio website to showcase my projects and skills.",
-    image: "/portfolio-site.png",
-    tags: ["Next.js", "TypeScript", "Tailwind", "Resend", "3D"],
+    image: "/project/portfolio-site.png",
+    tags: ["Next.js", "TS", "Tailwind", "Resend", "3D"],
     github: "https://github.com/Chukwuderah/praevus-portfolio",
     live: "https://pleasant-chukwuderah.vercel.app",
     featured: false,
@@ -25,7 +25,7 @@ const projects = [
     title: "Brief Generator App",
     description:
       "OpenBrief is an AI-powered brief generator for freelancers and creative professionals.",
-    image: "/openbrief.png",
+    image: "/project/openbrief.png",
     tags: ["Next.js", "TypeScript", "Shadcn/ui", "API"],
     github: "https://github.com/Chukwuderah/openbrief",
     live: "https://openbrief.vercel.app/",
@@ -36,10 +36,9 @@ const projects = [
     title: "SyncUp - Smart Scheduling",
     description:
       "A modern wep app that simplifies scheduling and team collaboration.",
-    image: "/syncup.png",
+    image: "/project/syncup.png",
     tags: ["Next.js", "TypeScript", "Resend", "Supabase"],
     github: "https://github.com/Chukwuderah/SyncUp",
-    live: "/",
     featured: false,
     upcoming: "true",
   },
@@ -48,8 +47,8 @@ const projects = [
     title: "Shade Maker",
     description:
       "A dynamic color gradient generator built with React and Framer Motion.",
-    image: "/shade-maker.png",
-    tags: ["React", "Tailwind", "Framer Motion", "TinyColor 2"],
+    image: "/project/shade-maker.png",
+    tags: ["React", "Framer Motion", "TinyColor 2"],
     github: "https://github.com/Chukwuderah/ShadeMaker",
     live: "https://shade-maker-wine.vercel.app/",
     featured: false,
@@ -59,7 +58,7 @@ const projects = [
     title: "Banter Box",
     description:
       "AI-powered chat interface with dynamic response and voice input/output.",
-    image: "/banter-box.png",
+    image: "/project/banter-box.png",
     tags: ["Next.js", "APIs", "webspeechAPI", "TypeScript"],
     github: "https://github.com/Chukwuderah/BanterBox",
     live: "https://banter-box-nu.vercel.app/",
@@ -70,10 +69,18 @@ const projects = [
     title: "Estate Management Platform",
     description:
       "An App that helps you manage your properties and tenants with ease.",
-    image: "/estate-sync.png",
+    image: "/project/estate-sync.png",
     tags: ["Next.js", "Node.js", "Database", "Auth"],
-    // github: "https://github.com",
-    // live: "https://example.com",
+    featured: true,
+  },
+  {
+    id: 7,
+    title: "Surespot Admin Dashboard",
+    description:
+      "A sleek dashboard for monitoring and managing Surespot's mobile app performance and user engagement.",
+    image: "/project/surespot.png",
+    tags: ["Next.js", "Recharts", "TypeScript", "React"],
+    github: "https://github.com/Chukwuderah/surespot-admin-dashboard",
     featured: true,
   },
 ];
@@ -100,15 +107,8 @@ export default function Projects() {
     return true;
   });
 
-  // const handleMouseMove = (e: React.MouseEvent) => {
-  //   setMousePosition({ x: e.clientX, y: e.clientY });
-  // };
-
   return (
-    <ParallaxContainer
-      className="min-h-screen relative"
-      //   onMouseMove={handleMouseMove}
-    >
+    <ParallaxContainer className="min-h-screen relative">
       {/* Gallery Background */}
       <div
         className="absolute inset-0"
@@ -207,7 +207,7 @@ export default function Projects() {
           </motion.div>
 
           {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8 auto-rows-fr">
             {filteredProjects.map((project, index) => (
               <motion.div
                 key={project.id}
@@ -216,13 +216,15 @@ export default function Projects() {
                 transition={{ delay: 0.3 + index * 0.1, duration: 0.6 }}
                 onHoverStart={() => setHoveredProject(project.id)}
                 onHoverEnd={() => setHoveredProject(null)}
+                className="h-full"
               >
                 <Card3D
                   intensity={hoveredProject === project.id ? 15 : 8}
                   glowColor="var(--accent-primary)"
+                  className="h-full"
                 >
                   <GlassCard
-                    className="overflow-hidden group cursor-pointer transition-all duration-500"
+                    className="h-full flex flex-col overflow-hidden group cursor-pointer transition-all duration-500"
                     whileHover={{ y: -15, scale: 1.03 }}
                   >
                     {/* Project Image */}
@@ -261,34 +263,45 @@ export default function Projects() {
 
                       {/* Enhanced Overlay */}
                       <motion.div
-                        className="absolute inset-0 bg-black/70 flex items-center justify-center space-x-4"
+                        className="absolute inset-0 bg-black/70 flex items-center justify-center space-x-4 opacity-100 md:opacity-0"
                         initial={{ opacity: 0 }}
                         animate={{
-                          opacity: hoveredProject === project.id ? 1 : 0,
+                          opacity:
+                            typeof window !== "undefined" &&
+                            window.innerWidth >= 768
+                              ? hoveredProject === project.id
+                                ? 1
+                                : 0
+                              : 1,
                         }}
                         transition={{ duration: 0.3 }}
                         style={{ transform: "translateZ(10px)" }}
                       >
-                        <Card3D intensity={8}>
-                          <a
-                            href={project.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-3 glass-3d rounded-full transition-colors"
-                          >
-                            <Github className="w-6 h-6 text-white" />
-                          </a>
-                        </Card3D>
-                        <Card3D intensity={8}>
-                          <a
-                            href={project.live}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-3 glass-3d rounded-full transition-colors"
-                          >
-                            <ExternalLink className="w-6 h-6 text-white" />
-                          </a>
-                        </Card3D>
+                        {project.github && (
+                          <Card3D intensity={8}>
+                            <a
+                              href={project.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="p-3 glass-3d rounded-full transition-colors"
+                            >
+                              <Github className="w-6 h-6 text-white" />
+                            </a>
+                          </Card3D>
+                        )}
+
+                        {project.live && (
+                          <Card3D intensity={8}>
+                            <a
+                              href={project.live}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="p-3 glass-3d rounded-full transition-colors"
+                            >
+                              <ExternalLink className="w-6 h-6 text-white" />
+                            </a>
+                          </Card3D>
+                        )}
                       </motion.div>
 
                       {/* Featured Badge */}
@@ -324,7 +337,7 @@ export default function Projects() {
                     </div>
 
                     {/* Project Info */}
-                    <div className="p-6">
+                    <div className="py-6 px-3 lg:px-6 flex flex-col flex-grow">
                       <h3
                         className="text-xl font-bold mb-2"
                         style={{ color: "var(--text-primary)" }}
@@ -339,7 +352,7 @@ export default function Projects() {
                       </p>
 
                       {/* Tags */}
-                      <div className="flex flex-wrap gap-2">
+                      <div className="mt-auto flex flex-wrap gap-2">
                         {project.tags.map((tag) => (
                           <span
                             key={tag}

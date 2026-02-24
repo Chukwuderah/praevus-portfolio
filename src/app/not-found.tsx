@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { useNav } from "@/context/NavContext";
 import GlassCard from "@/components/shared/GlassCard";
 import { Button } from "@/components/ui/button";
 import { Home, ArrowLeft } from "lucide-react";
@@ -11,12 +10,6 @@ import { motion } from "framer-motion";
 
 export default function NotFound() {
   const pathname = usePathname();
-  const { setShowNav } = useNav();
-
-  useEffect(() => {
-    setShowNav(false);
-    return () => setShowNav(true); // reset when leaving 404
-  }, [setShowNav]);
 
   useEffect(() => {
     if (pathname) {
@@ -28,7 +21,7 @@ export default function NotFound() {
   }, [pathname]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-6" data-no-nav>
+    <div className="min-h-screen flex items-center justify-center px-6">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
