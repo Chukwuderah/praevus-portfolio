@@ -134,18 +134,18 @@ export default function Home() {
                     <Link href="/projects">
                       <Button
                         size="lg"
-                        className="w-full group 
-                 bg-[var(--accent-primary)] 
-                 text-[var(--bg-primary)] 
-                 hover:bg-[var(--accent-secondary)] 
-                 transition-colors"
+                        className="w-full group bg-[var(--accent-primary)] text-[var(--bg-primary)] hover:bg-[var(--accent-secondary)] transition-colors"
                       >
                         Explore the Gallery
                         <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                       </Button>
                     </Link>
 
-                    <Link href="/contact">
+                    <a
+                      href="https://drive.google.com/drive/u/0/folders/1_n18finhW4B1xctEV2xYXObmjcge1UPD"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <Button
                         variant="outline"
                         size="lg"
@@ -156,9 +156,9 @@ export default function Home() {
                  hover:text-[var(--bg-primary)] 
                  transition-colors"
                       >
-                        Let&apos;s Connect
+                        View My Resume
                       </Button>
-                    </Link>
+                    </a>
                   </div>
                 </motion.div>
               </div>
@@ -211,17 +211,14 @@ export default function Home() {
                   </Button>
                 </Link>
 
-                {/* <Link href="/blog">
+                <Link href="/contact">
                   <Button
                     variant="ghost"
-                    className="w-full border border-[var(--accent-primary)]
-                 text-[var(--text-primary)] 
-                 hover:text-[var(--accent-primary)] 
-                 transition-colors"
+                    className="w-full bg-[var(--accent-primary)] text-[var(--bg-primary)] hover:text-[var(--accent-primary)] hover:border hover:border-[var(--accent-secondary)] transition-colors"
                   >
-                    Read My Thoughts
+                    Get in Touch
                   </Button>
-                </Link> */}
+                </Link>
               </div>
             </GlassCard>
           </motion.div>
