@@ -11,7 +11,7 @@ import { Stats } from "@/components/project/Stats";
 const projects = [
   {
     id: 1,
-    title: "Porfolio Website",
+    title: "Personal Porfolio Website",
     description:
       "A personal portfolio website to showcase my projects and skills.",
     image: "/project/portfolio-site.png",
@@ -31,16 +31,27 @@ const projects = [
     live: "https://openbrief.vercel.app/",
     featured: false,
   },
+  // {
+  //   id: 3,
+  //   title: "SyncUp - Smart Scheduling",
+  //   description:
+  //     "A modern wep app that simplifies scheduling and team collaboration.",
+  //   image: "/project/syncup.png",
+  //   tags: ["Next.js", "TypeScript", "Resend", "Supabase"],
+  //   github: "https://github.com/Chukwuderah/SyncUp",
+  //   featured: false,
+  //   upcoming: "true",
+  // },
   {
     id: 3,
-    title: "SyncUp - Smart Scheduling",
+    title: "Banter Box",
     description:
-      "A modern wep app that simplifies scheduling and team collaboration.",
-    image: "/project/syncup.png",
-    tags: ["Next.js", "TypeScript", "Resend", "Supabase"],
-    github: "https://github.com/Chukwuderah/SyncUp",
+      "AI-powered chat interface with dynamic response and voice input/output.",
+    image: "/project/banter-box.png",
+    tags: ["Next.js", "APIs", "webspeechAPI", "TypeScript"],
+    github: "https://github.com/Chukwuderah/BanterBox",
+    live: "https://banter-box-nu.vercel.app/",
     featured: false,
-    upcoming: "true",
   },
   {
     id: 4,
@@ -55,17 +66,6 @@ const projects = [
   },
   {
     id: 5,
-    title: "Banter Box",
-    description:
-      "AI-powered chat interface with dynamic response and voice input/output.",
-    image: "/project/banter-box.png",
-    tags: ["Next.js", "APIs", "webspeechAPI", "TypeScript"],
-    github: "https://github.com/Chukwuderah/BanterBox",
-    live: "https://banter-box-nu.vercel.app/",
-    featured: false,
-  },
-  {
-    id: 6,
     title: "Estate Management Platform",
     description:
       "An App that helps you manage your properties and tenants with ease.",
@@ -74,7 +74,7 @@ const projects = [
     featured: true,
   },
   {
-    id: 7,
+    id: 6,
     title: "Surespot Admin Dashboard",
     description:
       "A sleek dashboard for monitoring and managing Surespot's mobile app performance and user engagement.",
@@ -92,7 +92,7 @@ const stats = [
   { number: "20+", label: "Technologies" },
 ];
 
-const filters = ["All", "Featured", "Upcoming"];
+const filters = ["All", "Featured"];
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState("All");
@@ -103,7 +103,7 @@ export default function Projects() {
   const filteredProjects = projects.filter((project) => {
     if (activeFilter === "All") return true;
     if (activeFilter === "Featured") return project.featured;
-    if (activeFilter === "Upcoming") return project.upcoming;
+    // if (activeFilter === "Upcoming") return project.upcoming;
     return true;
   });
 
@@ -320,7 +320,7 @@ export default function Projects() {
                         </div>
                       )}
                       {/* Upcoming Badge */}
-                      {project.upcoming && (
+                      {/* {project.upcoming && (
                         <div className="absolute top-4 right-4">
                           <Card3D intensity={5}>
                             <div
@@ -333,7 +333,7 @@ export default function Projects() {
                             </div>
                           </Card3D>
                         </div>
-                      )}
+                      )} */}
                     </div>
 
                     {/* Project Info */}
@@ -370,12 +370,29 @@ export default function Projects() {
             ))}
           </div>
 
+          {/* View All Projects Button */}
+          <Card3D
+            intensity={10}
+            glowColor="var(--accent-primary)"
+          >
+            <GlassCard className="max-w-sm mx-auto mt-10 mb-16 py-3 rounded-sm">
+              <a
+                className="w-full text-base font-semibold leading-5 flex items-center justify-center"
+                href="https://github.com/Chukwuderah"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View all projects
+                <ExternalLink className="w-4 h-4 ml-2" />
+              </a>
+            </GlassCard>
+          </Card3D>
+
           {/* Gallery Stats */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.8 }}
-            className="mt-20"
           >
             <Stats stats={stats} />
           </motion.div>

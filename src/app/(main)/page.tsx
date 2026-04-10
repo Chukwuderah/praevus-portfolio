@@ -86,7 +86,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="mb-12"
+            className="mb-12 h-screen"
           >
             <Card3D
               intensity={12}
@@ -122,7 +122,7 @@ export default function Home() {
                   transition={{ delay: 0.7 }}
                   className="space-y-4"
                 >
-                  <p className="text-[var(--text-secondary)] leading-relaxed max-w-3xl mx-auto">
+                  <p className="text-[var(--text-secondary)] text-base leading-relaxed max-w-3xl mx-auto">
                     Welcome to my digital mansion, where code meets creativity
                     and every project is crafted with passion, precision, and a
                     touch of magic. I specialize in creating beautiful,
@@ -169,6 +169,7 @@ export default function Home() {
             images={[
               { src: "/tech/react.png", alt: "React" },
               { src: "/tech/reactnative.png", alt: "React Native" },
+              { src: "/tech/expo.png", alt: "Expo" },
               { src: "/tech/nextjs.jpg", alt: "Next.js" },
               { src: "/tech/typescript.png", alt: "TypeScript" },
               { src: "/tech/javascript.png", alt: "JavaScript" },
@@ -185,7 +186,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.5 }}
-            className="mt-16"
+            className="mt-60"
           >
             <GlassCard className="py-8 px-4 md:px-8 max-w-2xl mx-auto">
               <h2 className="mansion-heading text-2xl font-bold mb-4">
@@ -216,7 +217,7 @@ export default function Home() {
                     variant="ghost"
                     className="w-full bg-[var(--accent-primary)] text-[var(--bg-primary)] hover:text-[var(--accent-primary)] hover:border hover:border-[var(--accent-secondary)] transition-colors"
                   >
-                    Get in Touch
+                    Get in Touch With Me
                   </Button>
                 </Link>
               </div>

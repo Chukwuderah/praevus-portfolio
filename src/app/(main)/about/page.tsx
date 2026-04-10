@@ -104,19 +104,22 @@ export default function About() {
                   style={{ color: "var(--text-secondary)" }}
                 >
                   <p>
-                    I am Pleasant Chukwuderah (Suavis),  an experienced
-                    frontend developer who believes in creating beautiful,
-                    accessible, and performant software experiences be it web or mobile.
+                    Hey! I&apos;m Pleasant (Suavis), if you haven&apos;t gathered
+                    that already by now. I&apos;m a frontend developer who believes in
+                    creating beautiful, accessible, and performant software
+                    experiences be it on web or mobile.
                   </p>
                   <p>
                     With 3 years of experience, I specialize in React, Next.js,
-                    and modern CSS frameworks, with proven track record of creating scalable and maintainable applications. I love turning complex problems
-                    into simple, elegant solutions.
+                    and modern CSS frameworks, with proven track record of
+                    creating scalable and maintainable applications. I love
+                    turning complex problems into simple, elegant solutions.
                   </p>
                   <p>
                     When I&apos;m not coding, you&apos;ll find me exploring new
-                    design trends, contributing to open-source projects,
-                    sharing knowledge with the developer community, or watching cartoons.
+                    design trends, messing around with some animation libraries, sharing
+                    knowledge with the developer community, or watching
+                    cartoons.
                   </p>
                 </div>
               </GlassCard>
@@ -167,7 +170,8 @@ export default function About() {
             <h2 className="text-4xl md:text-5xl font-bold">
               Operating System: Suavis
             </h2>
-            <p className="text-xl md:text-2xl max-w-3xl mx-auto"
+            <p
+              className="text-xl md:text-2xl max-w-3xl mx-auto"
               style={{ color: "var(--text-secondary)" }}
             >
               How I think. How I build. Where I&apos;m headed.

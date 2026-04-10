@@ -100,7 +100,7 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
-      const res = await fetch("https://formspree.io/f/xjkanylk", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -382,12 +382,6 @@ export default function Contact() {
                           </>
                         )}
                       </motion.button>
-                      <input
-                        type="hidden"
-                        name="_subject"
-                        value="New message from your portfolio site!"
-                      />
-                      <input type="hidden" name="_template" value="table" />
                     </Card3D>
                   </form>
                 </GlassCard>

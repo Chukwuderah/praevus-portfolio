@@ -301,8 +301,8 @@ html {
 
 .orbit-box {
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 190px;
+  height: 190px;
   transform-style: preserve-3d;
   animation: orbit-spin 20s linear infinite;
 }
@@ -316,9 +316,9 @@ html {
   }
 }
 
-.orbit-box:hover {
+/* .orbit-box:hover {
   animation-play-state: paused;
-}
+} */
 
 .orbit-box span {
   position: absolute;

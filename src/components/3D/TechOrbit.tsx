@@ -12,7 +12,7 @@ interface TechOrbitProps {
 
 export default function TechOrbit({ images }: TechOrbitProps) {
   return (
-    <section className="relative my-24 flex items-center justify-center overflow-hidden">
+    <section className="relative my-28 flex items-center justify-center">
       <div className="orbit-box">
         {images.map((img, index) => (
           <span

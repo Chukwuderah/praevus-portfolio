@@ -21,11 +21,11 @@ export async function POST(req: Request) {
 
     const { name, email, subject, message } = parsed.data;
 
-    await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: process.env.EMAIL_FROM!,
       to: process.env.EMAIL_TO!,
-      subject: `[Portfolio Contact] ${subject}`,
-      replyTo: email,
+      subject: `${subject} | suavis.dev`,
+      replyTo: [email],
       html: `
     <h2>New Contact Form Submission</h2>
     <p><b>Name:</b> ${name}</p>
@@ -34,7 +34,12 @@ export async function POST(req: Request) {
   `,
     });
 
-    return NextResponse.json({ success: true });
+    if (error) {
+      console.error("Resend error:", error);
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+
+    return NextResponse.json({ success: true, id: data?.id });
   } catch (error) {
     console.error(error);
     return NextResponse.json({ error: "Failed to send" }, { status: 500 });
