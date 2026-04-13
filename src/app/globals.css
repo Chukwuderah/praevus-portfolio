@@ -304,7 +304,13 @@ html {
   width: 190px;
   height: 190px;
   transform-style: preserve-3d;
-  animation: orbit-spin 20s linear infinite;
+  animation: orbit-spin 15s linear infinite;
+}
+
+@media screen and (min-width: 768px) {
+  .orbit-box {
+    animation: orbit-spin 20s linear infinite;
+  }
 }
 
 @keyframes orbit-spin {
