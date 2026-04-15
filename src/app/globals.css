@@ -69,10 +69,16 @@
     @apply border-border;
   }
   body {
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family:
+      "Inter",
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
     background: var(--bg-primary);
     color: var(--text-primary);
-    transition: background-color 0.5s ease, color 0.5s ease;
+    transition:
+      background-color 0.5s ease,
+      color 0.5s ease;
   }
 }
 
@@ -301,16 +307,10 @@ html {
 
 .orbit-box {
   position: relative;
-  width: 190px;
-  height: 190px;
+  width: 200px;
+  height: 200px;
   transform-style: preserve-3d;
   animation: orbit-spin 15s linear infinite;
-}
-
-@media screen and (min-width: 768px) {
-  .orbit-box {
-    animation: orbit-spin 20s linear infinite;
-  }
 }
 
 @keyframes orbit-spin {
@@ -337,8 +337,8 @@ html {
 }
 
 @media (max-width: 768px) {
-  .orbit-box span {
-    transform: rotateY(calc(var(--i) * 45deg)) translateZ(280px);
+  .orbit-box {
+    animation: orbit-spin 20s linear infinite;
   }
 }
 
