@@ -6,7 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap:
-      "https://pleasant-chukwuderah.vercel.app/sitemap.xml",
+    sitemap: "https://suavis.dev/sitemap.xml",
   };
 }

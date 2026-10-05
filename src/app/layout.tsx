@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Pleasant Chukwuderah" }],
   creator: "Pleasant Chukwuderah",
-  metadataBase: new URL("https://pleasant-chukwuderah.vercel.app"),
+  metadataBase: new URL("https://suavis.dev"),
   icons: {
     icon: "/favicon_io/favicon.ico",
     shortcut: "/favicon_io/favicon-16x16.png",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     title: "Pleasant Chukwuderah | Frontend Developer",
     description:
       "Frontend engineer building immersive, high-performance web applications.",
-    url: "https://pleasant-chukwuderah.vercel.app",
+    url: "https://suavis.dev",
     siteName: "Pleasant Chukwuderah",
     images: [
       {
@@ -81,7 +81,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               name: "Pleasant Chukwuderah",
-              url: "https://pleasant-chukwuderah.vercel.app",
+              url: "https://suavis.dev",
               jobTitle: "Frontend Developer",
               sameAs: [
                 "https://github.com/Chukwuderah",
