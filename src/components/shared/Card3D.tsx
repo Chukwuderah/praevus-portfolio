@@ -29,12 +29,12 @@ export default function Card3D({
   const rotateX = useTransform(
     mouseYSpring,
     [-0.5, 0.5],
-    [intensity, -intensity]
+    [intensity, -intensity],
   );
   const rotateY = useTransform(
     mouseXSpring,
     [-0.5, 0.5],
-    [-intensity, intensity]
+    [-intensity, intensity],
   );
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {

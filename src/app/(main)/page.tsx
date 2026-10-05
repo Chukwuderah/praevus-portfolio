@@ -86,7 +86,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="mb-12"
+            className="mb-16"
           >
             <Card3D
               intensity={12}
@@ -134,14 +134,14 @@ export default function Home() {
                     <Link href="/projects">
                       <Button
                         size="lg"
-                        className="w-full group bg-[var(--accent-primary)] text-[var(--bg-primary)] hover:bg-[var(--accent-secondary)] transition-colors"
+                        className="w-full z-2 group bg-[var(--accent-primary)] text-[var(--bg-primary)] hover:bg-[var(--accent-secondary)] transition-colors"
                       >
                         Explore the Gallery
                         <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                       </Button>
                     </Link>
 
-                    <a
+                    {/* <a
                       href="https://drive.google.com/drive/u/0/folders/1_n18finhW4B1xctEV2xYXObmjcge1UPD"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -149,7 +149,7 @@ export default function Home() {
                       <Button
                         variant="outline"
                         size="lg"
-                        className="w-full 
+                        className="w-full z-2
                  border-[var(--accent-primary)] 
                  text-[var(--accent-primary)] 
                  hover:bg-[var(--accent-primary)] 
@@ -158,7 +158,7 @@ export default function Home() {
                       >
                         View My Resume
                       </Button>
-                    </a>
+                    </a> */}
                   </div>
                 </motion.div>
               </div>

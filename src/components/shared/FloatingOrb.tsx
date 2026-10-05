@@ -87,7 +87,7 @@ export default function FloatingOrb({
       className={cn(
         "rounded-full flex items-center justify-center",
         sizeClasses[size],
-        className
+        className,
       )}
       style={{
         background: `radial-gradient(circle at 30% 30%, ${color}80, ${color}40, ${color}20)`,

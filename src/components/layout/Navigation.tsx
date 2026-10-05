@@ -12,7 +12,6 @@ const navItems = [
   { href: "/", label: "Welcome Hall", icon: Home },
   { href: "/about", label: "Library", icon: User },
   { href: "/projects", label: "Gallery", icon: Briefcase },
-  // { href: "/blog", label: "Study", icon: BookOpen },
   { href: "/contact", label: "Observatory", icon: Mail },
 ];
 
@@ -76,7 +75,7 @@ export default function Navigation() {
                     <motion.div
                       className={cn(
                         "flex items-center space-x-2 px-3 py-2 rounded-lg transition-colors",
-                        isActive ? "text-white" : "hover:bg-white/10"
+                        isActive ? "text-white" : "hover:bg-white/10",
                       )}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
@@ -116,7 +115,7 @@ export default function Navigation() {
                   "flex flex-col items-center px-3 py-2 rounded-lg transition-colors",
                   isActive
                     ? "text-[var(--accent-primary)]"
-                    : "hover:bg-white/10"
+                    : "hover:bg-white/10",
                 )}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
@@ -164,7 +163,12 @@ export default function Navigation() {
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "spring", stiffness: 100, damping: 20, duration: 0.3 }}
+              transition={{
+                type: "spring",
+                stiffness: 100,
+                damping: 20,
+                duration: 0.3,
+              }}
               className="fixed top-0 right-0 w-[70%] h-screen bg-[var(--bg-primary)] z-50 pl-8 pt-10 flex flex-col space-y-8"
             >
               <button
@@ -187,7 +191,7 @@ export default function Navigation() {
                         "flex items-center space-x-3 text-base",
                         isActive
                           ? "text-[var(--accent-primary)]"
-                          : "hover:text-white"
+                          : "hover:text-white",
                       )}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}

@@ -21,7 +21,7 @@ export default function GlassCard({
       className={cn(
         "rounded-2xl",
         strong ? "glass-strong" : "glass",
-        className
+        className,
       )}
       whileHover={{ scale: 1.02 }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}

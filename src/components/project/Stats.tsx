@@ -18,7 +18,7 @@ export function Stats({
   const duration = 15; // slower + smoother scroll
   const isDark = theme === "dark";
 
- useEffect(() => {
+  useEffect(() => {
     const startX = isDark ? "-50%" : "0%";
     const endX = isDark ? "0%" : "-50%";
 

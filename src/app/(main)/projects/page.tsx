@@ -17,11 +17,30 @@ const projects = [
     image: "/project/portfolio-site.png",
     tags: ["Next.js", "TS", "Tailwind", "Resend", "3D"],
     github: "https://github.com/Chukwuderah/praevus-portfolio",
-    live: "https://pleasant-chukwuderah.vercel.app",
+    live: "https://suavis.dev",
     featured: false,
   },
   {
     id: 2,
+    title: "Estate Management Platform",
+    description:
+      "An App that helps you manage your properties and tenants with ease.",
+    image: "/project/estate-sync.png",
+    tags: ["Next.js", "Node.js", "Database", "Auth"],
+    featured: true,
+  },
+  {
+    id: 3,
+    title: "Surespot Admin Dashboard",
+    description:
+      "A sleek dashboard for monitoring and managing Surespot's mobile app performance and user engagement.",
+    image: "/project/surespot.png",
+    tags: ["Next.js", "Recharts", "TypeScript", "React"],
+    github: "https://github.com/Chukwuderah/surespot-admin-dashboard",
+    featured: true,
+  },
+  {
+    id: 4,
     title: "Brief Generator App",
     description:
       "OpenBrief is an AI-powered brief generator for freelancers and creative professionals.",
@@ -31,19 +50,8 @@ const projects = [
     live: "https://openbrief.vercel.app/",
     featured: false,
   },
-  // {
-  //   id: 3,
-  //   title: "SyncUp - Smart Scheduling",
-  //   description:
-  //     "A modern wep app that simplifies scheduling and team collaboration.",
-  //   image: "/project/syncup.png",
-  //   tags: ["Next.js", "TypeScript", "Resend", "Supabase"],
-  //   github: "https://github.com/Chukwuderah/SyncUp",
-  //   featured: false,
-  //   upcoming: "true",
-  // },
   {
-    id: 3,
+    id: 5,
     title: "Banter Box",
     description:
       "AI-powered chat interface with dynamic response and voice input/output.",
@@ -54,7 +62,7 @@ const projects = [
     featured: false,
   },
   {
-    id: 4,
+    id: 6,
     title: "Shade Maker",
     description:
       "A dynamic color gradient generator built with React and Framer Motion.",
@@ -63,25 +71,6 @@ const projects = [
     github: "https://github.com/Chukwuderah/ShadeMaker",
     live: "https://shade-maker-wine.vercel.app/",
     featured: false,
-  },
-  {
-    id: 5,
-    title: "Estate Management Platform",
-    description:
-      "An App that helps you manage your properties and tenants with ease.",
-    image: "/project/estate-sync.png",
-    tags: ["Next.js", "Node.js", "Database", "Auth"],
-    featured: true,
-  },
-  {
-    id: 6,
-    title: "Surespot Admin Dashboard",
-    description:
-      "A sleek dashboard for monitoring and managing Surespot's mobile app performance and user engagement.",
-    image: "/project/surespot.png",
-    tags: ["Next.js", "Recharts", "TypeScript", "React"],
-    github: "https://github.com/Chukwuderah/surespot-admin-dashboard",
-    featured: true,
   },
 ];
 
@@ -207,7 +196,7 @@ export default function Projects() {
           </motion.div>
 
           {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8 auto-rows-fr">
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8 auto-rows-fr mb-16">
             {filteredProjects.map((project, index) => (
               <motion.div
                 key={project.id}
@@ -369,24 +358,6 @@ export default function Projects() {
               </motion.div>
             ))}
           </div>
-
-          {/* View All Projects Button */}
-          <Card3D
-            intensity={10}
-            glowColor="var(--accent-primary)"
-          >
-            <GlassCard className="max-w-sm mx-auto mt-10 mb-16 py-3 rounded-sm">
-              <a
-                className="w-full text-base font-semibold leading-5 flex items-center justify-center"
-                href="https://github.com/Chukwuderah"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View all projects
-                <ExternalLink className="w-4 h-4 ml-2" />
-              </a>
-            </GlassCard>
-          </Card3D>
 
           {/* Gallery Stats */}
           <motion.div
